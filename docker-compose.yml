@@ -1,0 +1,70 @@
+version: '3.4'
+services:
+  backend:
+    image: customeronboarding
+    container_name: customeronboardingapi
+    build:
+      context: ./WebApi/
+      dockerfile: Dockerfile
+    depends_on: 
+      - database
+      - redis
+    ports:
+      - "8080:80"
+      - "443:443"
+    restart: always
+    environment: 
+      - DBHOST=database
+      - ASPNETCORE_ENVIRONMENT=Development
+      - JWT_ISSUER="https://yourcompany.com"
+      - JWT_AUDIENCE="https://yourcompany.com/api" 
+      - JWT_KEY=S0m3V3ryStr0ngAndR@nd0mS3cur3Key!
+      - SQLSERVER_CONNECTION_STRING=Server=database,1433;Database=productsdb;User Id=sa;Password=R4nd0mG3n3r4t3dP@ssw0rd;TrustServerCertificate=True;     
+      - REDIS_CONNECTION_STRING=redis:6379,password=YourRedisPassword
+
+  database:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: sqldb
+    ports:
+      - "1433:1433"
+    expose: 
+      - 1433
+    volumes:
+      - db-volume:/var/opt/mssql
+    restart: always
+    environment: 
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: R4nd0mG3n3r4t3dP@ssw0rd
+      MSSQL_DATABASE: productsdb
+      MSSQL_TCP_PORT: 1433
+      
+  sqlcmd:
+    image: mcr.microsoft.com/mssql-tools
+    container_name: sqlcmd
+    depends_on:
+      - database
+    entrypoint: ["/bin/bash", "-c", "sleep 10 && /opt/mssql-tools/bin/sqlcmd -S sqldb -U sa -P R4nd0mG3n3r4t3dP@ssw0rd -d productsdb -i /scripts/create_procedures.sql"]
+    volumes:
+      - ./scripts:/scripts
+
+  redis:
+    image: redis:alpine
+    container_name: redis
+    ports:
+      - "6379:6379"
+    restart: always
+    environment:
+      - REDIS_PASSWORD=YourRedisPassword
+
+  frontend:
+    image: nginx:alpine
+    container_name: frontend
+    volumes:
+      - ./WebApp:/usr/share/nginx/html
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+      
+volumes:
+  db-volume:

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Onboarding | Detail</title>
+    <link rel="stylesheet" href="../../shared.css">
+    <link rel="stylesheet" href="css/userDetails.css">
+    <link rel="icon" type="image/x-icon" href="../../images/favicon.ico">
+</head>
+
+<body>
+    <main id="details-container">
+        <div class="header-controller">
+            <button id="users-btn" class="primary-btn">Voltar para listagem</button>
+            <button id="logout-btn" class="secondary-btn">Logout</button>
+        </div>
+        <img id="user-logo" src="#">
+        <input type="file" id="uploadInput" accept="image/*">
+        <button id="update-user" class="primary-btn">Atualizar Usuário</button>
+        <span id="user-data-group">
+            <span id="group-name">
+                <span>Nome</span>
+                <input id="user-name" type="text" placeholder="User name">
+            </span>
+            <span id="group-email">
+                <span>Email</span>
+                <input id="user-email" type="text" placeholder="User email" disabled>
+            </span>
+            <span id="group-id">
+                <span>Id</span>
+                <input id="user-id" type="text" placeholder="User id" disabled>
+            </span>
+            <span id="group-role">
+                <span>Role</span>
+                <input id="user-role" type="text" placeholder="User role" disabled>
+            </span>
+        </span>
+        <span id="addresses-group">
+            <div id="addrgroup-header">
+                <h2>Endereços do usuário:</h2>
+                <button id="newaddr-btn" class="primary-btn">Adicionar Endereço</button>
+            </div>
+        </span>
+    </main>
+    <script src="js/userDetail.js"></script>
+</body>
+
+</html>

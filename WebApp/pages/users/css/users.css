@@ -1,0 +1,81 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+#main{
+    background-color: aqua;
+    max-width: 800px;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+    "users"
+    "pages"
+    ;
+}
+
+#users-group {
+    grid-area: users;
+}
+
+.user-info{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.user-data, .user-inputs{
+    display: flex;
+}
+
+.user-inputs{
+    justify-content: end;
+    
+    flex-wrap: wrap;
+}
+
+.user-data img {
+    width: 100px;
+    height: 100px;
+}
+.user-inputs > p {
+    width: 45%;
+}
+
+.edit-btn {
+    width: 100%;
+}
+
+#pages-group {
+    grid-area: pages;
+}
+
+#pages-group{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    "pagesNumber";
+    justify-items: center;
+    align-items: center;
+}
+
+#pages {
+    grid-area: pagesNumber;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+}
+
+#pages > button {
+    width: 20%;
+}
+
+button:hover {
+    cursor: pointer;
+}

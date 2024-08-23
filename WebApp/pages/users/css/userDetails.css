@@ -1,0 +1,128 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+#details-container {
+    padding: 20px;
+    background-color: aqua;
+    max-width: 800px;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 160px 4fr;
+    grid-template-rows: 50px 168px 30px auto;
+    grid-template-areas:
+    "headerController headerController"
+    "logo userData"
+    "upload updateBtn"
+    "addresses addresses"
+    ;
+}
+
+.header-controller{
+    grid-area: headerController;
+}
+
+#update-user {
+    max-width: 120px;
+    align-self: baseline;
+    justify-self: end;
+}
+
+#uploadInput {
+    grid-area: upload;
+}
+
+#user-logo{
+    grid-area: logo;
+
+    background-color: aqua;
+    width: 100%;
+    height: 100%;
+}
+
+#user-data-group {
+    grid-area: userData;
+}
+
+#user-data-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+    "name id"
+    "email role"
+    ;
+    align-items: center;
+}
+
+#group-name{
+    grid-area: name;
+}
+
+#group-email{
+    grid-area: email;
+}
+
+#group-id{
+    grid-area: id;
+}
+#user-id{
+    width: 252px;
+}
+#group-role{
+    grid-area: role;
+}
+
+#addresses-group{
+    grid-area: addresses;
+    display: flex;
+    flex-direction: column;
+}
+
+.secondary-btn {
+    background-color: #d35917;
+}
+
+.primary-btn {
+    background-color: #007bff;
+}
+
+.primary-btn, .secondary-btn {
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.primary-btn, .secondary-btn:hover {
+    cursor: pointer;
+}
+
+#addrgroup-header{
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.addr-group{
+    display: flex;
+    flex-wrap: wrap;
+    padding:10px;
+    margin-bottom: 10px;
+    border: solid 1px black;
+}
+
+.addr-group > span {
+    display: flex;
+    flex-direction: column;
+}
+
+.addr-btns {
+    padding-top: 10px;
+    min-width: 115px;
+    display: flex;
+    justify-content: space-between;
+}
