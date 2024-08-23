@@ -76,6 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (data != null) {
                         sessionStorage.setItem('userData', JSON.stringify(data.user));
                         sessionStorage.setItem('jwtToken', JSON.stringify(data.jwtToken));
+                        sessionStorage.setItem('currentRole', JSON.stringify(data.user.role));
 
                         if (data.user.role == 'sys_user') {
                             window.location.href = '/pages/users/userDetails.html'
