@@ -111,7 +111,7 @@ Após ser provisionado pelo docker-compose, as tabelas (Users e Address) e Store
 
 ## Redis
 
-Um critério para a empresa é a performance da aplicação, pensando nisso o Redis foi utilizado para armazenar dados dos usuários e aliviar operações repetitivas no banco de dados.
+Um critério para a empresa é a performance da aplicação, pensando nisso o Redis foi utilizado para armazenar resultados de queries e aliviar operações repetitivas no banco de dados.
 
 A versão utilizada pelo docker-compose é redis:alpine.
 
